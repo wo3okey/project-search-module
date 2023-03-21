@@ -4,15 +4,19 @@ import com.wookey.project.client.blog.application.BlogRequest
 import com.wookey.project.client.blog.application.BlogSearchSort
 import com.wookey.project.client.blog.application.port.NaverBlogClientPort
 import com.wookey.project.commons.annotation.Adapter
+import org.springframework.beans.factory.annotation.Value
+import org.springframework.context.annotation.PropertySource
 import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
 import org.springframework.web.reactive.function.client.WebClient
 
 @Adapter
-class NaverBlogHttpClient : NaverBlogClientPort {
-    val url = "https://openapi.naver.com"
-    val clientId = "TYsW65fH5pJDAzoEUYgS" // setting just for this project
-    val clientSecret = "Xt2H7UrWMr" // setting just for this project
+@PropertySource("classpath:application-ignore.yml")
+class NaverBlogHttpClient(
+    @Value("\${client.naver.url}") url: String,
+    @Value("\${client.naver.client-id}") clientId: String,
+    @Value("\${client.naver.client-secret}") clientSecret: String
+) : NaverBlogClientPort {
 
     private val client = WebClient.builder()
         .baseUrl(url)

@@ -1,0 +1,6 @@
+client.kakao.url: https://dapi.kakao.com
+client.kakao.rest-api-key: 90f206beb7025799b0d8932f87adf9c0
+
+client.naver.url: https://openapi.naver.com
+client.naver.client-id: TYsW65fH5pJDAzoEUYgS
+client.naver.client-secret: Xt2H7UrWMr

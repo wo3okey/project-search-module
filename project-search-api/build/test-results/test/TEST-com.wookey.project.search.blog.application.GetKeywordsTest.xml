@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.wookey.project.search.blog.application.GetKeywordsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-21T08:50:36" hostname="ip-172-30-1-49.ap-northeast-2.compute.internal" time="0.008">
+<testsuite name="com.wookey.project.search.blog.application.GetKeywordsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-21T15:11:13" hostname="wookeyui-MacBookPro.local" time="0.011">
   <properties/>
-  <testcase name="Then: 블로그 검색 정보를 반환한다." classname="com.wookey.project.search.blog.application.GetKeywordsTest" time="0.008"/>
-  <system-out><![CDATA[17:50:36.321 [pool-1-thread-1 @coroutine#5] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for BlogClientUseCase name=#7
-17:50:36.321 [pool-1-thread-1 @coroutine#5] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for BlogSearchKeywordRepository name=#8
-17:50:36.322 [pool-1-thread-1 @coroutine#5] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for BlogSearchLogRepository name=#9
-17:50:36.359 [pool-3-thread-1 @coroutine#6] DEBUG io.mockk.impl.recording.states.AnsweringState - Answering [com.wookey.project.search.blog.domain.SearchKeyword@32bba73a, com.wookey.project.search.blog.domain.SearchKeyword@6c44d468, com.wookey.project.search.blog.domain.SearchKeyword@3bc278fc] on BlogSearchKeywordRepository(#8).getKeywords(10, POPULAR)
+  <testcase name="Then: 블로그 검색 정보를 반환한다." classname="com.wookey.project.search.blog.application.GetKeywordsTest" time="0.011"/>
+  <system-out><![CDATA[00:11:13.083 [pool-1-thread-1 @coroutine#5] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for BlogClientUseCase name=#7
+00:11:13.084 [pool-1-thread-1 @coroutine#5] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for BlogSearchKeywordRepository name=#8
+00:11:13.084 [pool-1-thread-1 @coroutine#5] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for BlogSearchLogRepository name=#9
+00:11:13.122 [pool-3-thread-1 @coroutine#6] DEBUG io.mockk.impl.recording.states.AnsweringState - Answering [com.wookey.project.search.blog.domain.SearchKeyword@b68dedc, com.wookey.project.search.blog.domain.SearchKeyword@71fbe914, com.wookey.project.search.blog.domain.SearchKeyword@60873637] on BlogSearchKeywordRepository(#8).getKeywords(10, POPULAR)
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.wookey.project.search.blog.application.SearchTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-21T08:50:36" hostname="ip-172-30-1-49.ap-northeast-2.compute.internal" time="0.015">
+<testsuite name="com.wookey.project.search.blog.application.SearchTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-21T15:11:13" hostname="wookeyui-MacBookPro.local" time="0.015">
   <properties/>
   <testcase name="Then: 블로그 검색 정보를 반환한다." classname="com.wookey.project.search.blog.application.SearchTest" time="0.015"/>
-  <system-out><![CDATA[17:50:36.371 [pool-1-thread-1 @coroutine#7] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for BlogClientUseCase name=#10
-17:50:36.371 [pool-1-thread-1 @coroutine#7] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for BlogSearchKeywordRepository name=#11
-17:50:36.371 [pool-1-thread-1 @coroutine#7] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for BlogSearchLogRepository name=#12
-17:50:36.379 [pool-4-thread-1 @coroutine#8] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for Unit name=child of #12#13
-17:50:36.381 [pool-4-thread-1 @coroutine#8] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for Unit name=child of #11#14
-17:50:36.383 [pool-4-thread-1 @coroutine#8] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for Pair name=child of #10#15
-17:50:36.386 [pool-4-thread-1 @coroutine#8] DEBUG io.mockk.impl.recording.states.AnsweringState - Answering ([com.wookey.project.client.blog.application.BlogClientResponse@2ecbf7ee], 1) on BlogClientUseCase(#10).getBlogContents(BlogRequest(query=wookey, page=1, size=10, sort=ACCURACY, source=KAKAO))
-17:50:36.387 [pool-4-thread-1 @coroutine#8] DEBUG io.mockk.impl.recording.states.AnsweringState - Answering kotlin.Unit on BlogSearchLogRepository(#12).save(BlogRequest(query=wookey, page=1, size=10, sort=ACCURACY, source=KAKAO))
-17:50:36.387 [pool-4-thread-1 @coroutine#8] DEBUG io.mockk.impl.recording.states.AnsweringState - Answering kotlin.Unit on BlogSearchKeywordRepository(#11).save(BlogRequest(query=wookey, page=1, size=10, sort=ACCURACY, source=KAKAO))
+  <system-out><![CDATA[00:11:13.136 [pool-1-thread-1 @coroutine#7] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for BlogClientUseCase name=#10
+00:11:13.136 [pool-1-thread-1 @coroutine#7] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for BlogSearchKeywordRepository name=#11
+00:11:13.136 [pool-1-thread-1 @coroutine#7] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for BlogSearchLogRepository name=#12
+00:11:13.144 [pool-4-thread-1 @coroutine#8] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for Unit name=child of #12#13
+00:11:13.146 [pool-4-thread-1 @coroutine#8] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for Unit name=child of #11#14
+00:11:13.148 [pool-4-thread-1 @coroutine#8] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for Pair name=child of #10#15
+00:11:13.152 [pool-4-thread-1 @coroutine#8] DEBUG io.mockk.impl.recording.states.AnsweringState - Answering ([com.wookey.project.client.blog.application.BlogClientResponse@2d320702], 1) on BlogClientUseCase(#10).getBlogContents(BlogRequest(query=wookey, page=1, size=10, sort=ACCURACY, source=KAKAO))
+00:11:13.152 [pool-4-thread-1 @coroutine#8] DEBUG io.mockk.impl.recording.states.AnsweringState - Answering kotlin.Unit on BlogSearchLogRepository(#12).save(BlogRequest(query=wookey, page=1, size=10, sort=ACCURACY, source=KAKAO))
+00:11:13.152 [pool-4-thread-1 @coroutine#8] DEBUG io.mockk.impl.recording.states.AnsweringState - Answering kotlin.Unit on BlogSearchKeywordRepository(#11).save(BlogRequest(query=wookey, page=1, size=10, sort=ACCURACY, source=KAKAO))
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

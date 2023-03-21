@@ -4,14 +4,18 @@ import com.wookey.project.client.blog.application.BlogRequest
 import com.wookey.project.client.blog.application.BlogSearchSort
 import com.wookey.project.client.blog.application.port.KaKaoBlogClientPort
 import com.wookey.project.commons.annotation.Adapter
+import org.springframework.beans.factory.annotation.Value
+import org.springframework.context.annotation.PropertySource
 import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
 import org.springframework.web.reactive.function.client.WebClient
 
 @Adapter
-class KakaoBlogHttpClient : KaKaoBlogClientPort {
-    val url = "https://dapi.kakao.com"
-    val restApiKey = "90f206beb7025799b0d8932f87adf9c0" // setting just for this project
+@PropertySource("classpath:application-ignore.yml")
+class KakaoBlogHttpClient(
+    @Value("\${client.kakao.url}") url: String,
+    @Value("\${client.kakao.rest-api-key}") restApiKey: String
+) : KaKaoBlogClientPort {
 
     private val client = WebClient.builder()
         .baseUrl(url)
