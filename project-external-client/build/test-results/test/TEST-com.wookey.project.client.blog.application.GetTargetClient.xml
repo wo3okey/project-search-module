@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.wookey.project.client.blog.application.GetTargetClient" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-03-21T15:10:43" hostname="wookeyui-MacBookPro.local" time="0.018">
+<testsuite name="com.wookey.project.client.blog.application.GetTargetClient" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-03-21T15:44:51" hostname="wookeyui-MacBookPro.local" time="0.017">
   <properties/>
-  <testcase name="Then: kakao blog client 객체를 반환한다." classname="com.wookey.project.client.blog.application.GetTargetClient" time="0.011"/>
+  <testcase name="Then: kakao blog client 객체를 반환한다." classname="com.wookey.project.client.blog.application.GetTargetClient" time="0.01"/>
   <testcase name="Then: naver blog client 객체를 반환한다." classname="com.wookey.project.client.blog.application.GetTargetClient" time="0.002"/>
-  <system-out><![CDATA[00:10:43.740 [pool-1-thread-1 @coroutine#5] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for KakaoBlogClient name=#7
-00:10:43.741 [pool-1-thread-1 @coroutine#5] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for NaverBlogClient name=#8
-00:10:43.774 [pool-3-thread-1 @coroutine#6] DEBUG io.mockk.impl.recording.states.AnsweringState - Answering KakaoBlogClient(#7) on KakaoBlogClient(#7).toString()
-00:10:43.786 [pool-3-thread-1 @coroutine#6] DEBUG io.mockk.impl.recording.states.AnsweringState - Answering NaverBlogClient(#8) on NaverBlogClient(#8).toString()
+  <system-out><![CDATA[00:44:51.905 [pool-1-thread-1 @coroutine#5] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for KakaoBlogClient name=#7
+00:44:51.906 [pool-1-thread-1 @coroutine#5] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for NaverBlogClient name=#8
+00:44:51.936 [pool-3-thread-1 @coroutine#6] DEBUG io.mockk.impl.recording.states.AnsweringState - Answering KakaoBlogClient(#7) on KakaoBlogClient(#7).toString()
+00:44:51.949 [pool-3-thread-1 @coroutine#6] DEBUG io.mockk.impl.recording.states.AnsweringState - Answering NaverBlogClient(#8) on NaverBlogClient(#8).toString()
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

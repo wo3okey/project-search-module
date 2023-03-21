@@ -1,1 +1,11 @@
-project-external-client/src/main/resources/application-ignore.yml
+# Gradle
+.idea/**/gradle.xml
+.idea/**/libraries
+.gradle
+build/
+**/build/
+!gradle-wrapper.jar
+gradle-app.setting
+
+# client key
+**/src/main/resources/application-ignore.yml
