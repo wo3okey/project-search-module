@@ -2,7 +2,7 @@
 .idea/**/gradle.xml
 .idea/**/libraries
 .gradle
-build/
+project-external-client/build/
 **/build/
 !gradle-wrapper.jar
 gradle-app.setting
