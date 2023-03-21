@@ -37,7 +37,7 @@ class KakaoBlogClient(
         val response = result.documents.map {
             BlogClientResponse(
                 Blog(it.blogname),
-                Contents(it.url, it.title, it.thumbnail, it.printTime)
+                Contents(it.url, it.title, it.thumbnail, it.datetime)
             )
         }
         return Pair(response, total)

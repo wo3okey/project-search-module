@@ -42,7 +42,7 @@ class BlogSearchController(
         summary = "블로그 검색어(키워드) 목록 조회",
         parameters = [
             Parameter(name = "top", description = "키워드 최대 노출 갯수, 최대10"),
-            Parameter(name = "condition", description = "키워드 조회 조건")
+            Parameter(name = "condition", description = "키워드 조회 조건, POPULAR(인기순), DATE(최신순), 기본 값 POPULAR")
         ]
     )
     fun getKeywords(

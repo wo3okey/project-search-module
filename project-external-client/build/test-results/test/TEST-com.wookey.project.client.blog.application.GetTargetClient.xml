@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.wookey.project.client.blog.application.GetTargetClient" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-03-21T06:27:47" hostname="ip-172-30-1-49.ap-northeast-2.compute.internal" time="0.019">
+  <properties/>
+  <testcase name="Then: kakao blog client 객체를 반환한다." classname="com.wookey.project.client.blog.application.GetTargetClient" time="0.012"/>
+  <testcase name="Then: naver blog client 객체를 반환한다." classname="com.wookey.project.client.blog.application.GetTargetClient" time="0.002"/>
+  <system-out><![CDATA[15:27:47.054 [pool-1-thread-1 @coroutine#5] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for KakaoBlogClient name=#7
+15:27:47.055 [pool-1-thread-1 @coroutine#5] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for NaverBlogClient name=#8
+15:27:47.085 [pool-3-thread-1 @coroutine#6] DEBUG io.mockk.impl.recording.states.AnsweringState - Answering KakaoBlogClient(#7) on KakaoBlogClient(#7).toString()
+15:27:47.100 [pool-3-thread-1 @coroutine#6] DEBUG io.mockk.impl.recording.states.AnsweringState - Answering NaverBlogClient(#8) on NaverBlogClient(#8).toString()
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

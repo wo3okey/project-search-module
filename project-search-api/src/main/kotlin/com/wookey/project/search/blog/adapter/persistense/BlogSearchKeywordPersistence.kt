@@ -11,19 +11,19 @@ import org.springframework.stereotype.Repository
 
 @Repository
 class BlogSearchKeywordPersistence(
-    val jpaRepository: BlogSearchKeywordJpaRepository
+    val blogSearchKeywordJpaRepository: BlogSearchKeywordJpaRepository
 ) : BlogSearchKeywordRepository {
     override fun save(request: BlogRequest) {
-        val entity = jpaRepository.findByKeyword(keyword = request.query)
+        val entity = blogSearchKeywordJpaRepository.findByKeyword(keyword = request.query)
         if (entity != null) {
             entity.incSearchCount()
             return
         }
-        jpaRepository.save(BlogSearchKeywordEntity(keyword = request.query))
+        blogSearchKeywordJpaRepository.save(BlogSearchKeywordEntity(keyword = request.query))
     }
 
     override fun getKeywords(top: Int, condition: SearchKeywordCondition): List<SearchKeyword> {
-        val entities = jpaRepository.getKeywords(top, condition)
+        val entities = blogSearchKeywordJpaRepository.getKeywords(top, condition)
         return entities.map { BlogSearchKeywordMapper.toDomain(it) }
     }
 }

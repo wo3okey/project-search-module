@@ -15,7 +15,11 @@ import javax.persistence.Table
 @Entity
 @Table(
     name = "blog_search_keyword",
-    indexes = [Index(name = "idx_keyword", columnList = "keyword", unique = true)]
+    indexes = [
+        Index(name = "idx_keyword", columnList = "keyword", unique = true),
+        Index(name = "idx_search_count", columnList = "search_count"),
+        Index(name = "idx_modified_at", columnList = "modified_at")
+    ]
 )
 @DynamicUpdate
 class BlogSearchKeywordEntity(

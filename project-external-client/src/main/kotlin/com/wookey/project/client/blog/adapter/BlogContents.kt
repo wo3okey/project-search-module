@@ -18,7 +18,7 @@ class KakaoBlogContents(
         val url: String,
         val blogname: String,
         val thumbnail: String? = null,
-        val printTime: String? = null
+        val datetime: String? = null
     )
 }
 

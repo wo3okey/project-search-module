@@ -4,5 +4,5 @@ class Contents(
     val url: String,
     val title: String,
     val thumbnail: String? = null,
-    val postDate: String? = null
+    val createdAt: String? = null
 )

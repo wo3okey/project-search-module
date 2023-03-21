@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.wookey.project.search.blog.application.GetBlogContentsTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2023-03-21T08:50:36" hostname="ip-172-30-1-49.ap-northeast-2.compute.internal" time="0.073">
+  <properties/>
+  <testcase name="Then: 컨텐츠 결과값을 반환한다." classname="com.wookey.project.search.blog.application.GetBlogContentsTest" time="0.034"/>
+  <testcase name="Then: ClientException이 발생한다." classname="com.wookey.project.search.blog.application.GetBlogContentsTest" time="0.006"/>
+  <testcase name="Then: 컨텐츠 결과값을 반환한다." classname="com.wookey.project.search.blog.application.GetBlogContentsTest" time="0.003"/>
+  <testcase name="Then: ClientException이 발생한다." classname="com.wookey.project.search.blog.application.GetBlogContentsTest" time="0.002"/>
+  <system-out><![CDATA[17:50:35.059 [pool-1-thread-1 @coroutine#3] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for BlogClientUseCase name=#1
+17:50:35.575 [pool-1-thread-1 @coroutine#3] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for BlogSearchKeywordRepository name=#2
+17:50:35.603 [pool-1-thread-1 @coroutine#3] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for BlogSearchLogRepository name=#3
+17:50:36.191 [pool-2-thread-1 @coroutine#4] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for Pair name=child of #1#4
+17:50:36.226 [pool-2-thread-1 @coroutine#4] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for Unit name=child of #3#5
+17:50:36.237 [pool-2-thread-1 @coroutine#4] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for Unit name=child of #2#6
+17:50:36.260 [pool-2-thread-1 @coroutine#4] DEBUG io.mockk.impl.recording.states.AnsweringState - Answering ([com.wookey.project.client.blog.application.BlogClientResponse@72013fa1], 1) on BlogClientUseCase(#1).getBlogContents(BlogRequest(query=wookey, page=1, size=10, sort=RECENCY, source=KAKAO))
+17:50:36.261 [pool-2-thread-1 @coroutine#4] DEBUG io.mockk.impl.recording.states.AnsweringState - Answering kotlin.Unit on BlogSearchLogRepository(#3).save(BlogRequest(query=wookey, page=1, size=10, sort=RECENCY, source=KAKAO))
+17:50:36.261 [pool-2-thread-1 @coroutine#4] DEBUG io.mockk.impl.recording.states.AnsweringState - Answering kotlin.Unit on BlogSearchKeywordRepository(#2).save(BlogRequest(query=wookey, page=1, size=10, sort=RECENCY, source=KAKAO))
+17:50:36.286 [pool-2-thread-1 @coroutine#4] DEBUG io.mockk.impl.recording.states.AnsweringState - Throwing java.lang.RuntimeException on BlogClientUseCase(#1).getBlogContents(BlogRequest(query=wookey, page=1, size=10, sort=RECENCY, source=KAKAO))
+17:50:36.289 [pool-2-thread-1 @coroutine#4] ERROR com.wookey.project.search.blog.application.BlogSearchService - KAKAO client error: null
+17:50:36.290 [pool-2-thread-1 @coroutine#4] DEBUG io.mockk.impl.recording.states.AnsweringState - Throwing java.lang.RuntimeException on BlogClientUseCase(#1).getBlogContents(BlogRequest(query=wookey, page=1, size=10, sort=RECENCY, source=NAVER))
+17:50:36.290 [pool-2-thread-1 @coroutine#4] ERROR com.wookey.project.search.blog.application.BlogSearchService - NAVER client error: null
+WARN: Duplicated test name 블로그 조회가 정상적일 때. To disable this message, set DuplicateTestNameMode to None.
+17:50:36.306 [pool-2-thread-1 @coroutine#4] DEBUG io.mockk.impl.recording.states.AnsweringState - Answering ([com.wookey.project.client.blog.application.BlogClientResponse@b20219], 1) on BlogClientUseCase(#1).getBlogContents(BlogRequest(query=wookey, page=1, size=10, sort=RECENCY, source=KAKAO))
+17:50:36.306 [pool-2-thread-1 @coroutine#4] DEBUG io.mockk.impl.recording.states.AnsweringState - Answering kotlin.Unit on BlogSearchLogRepository(#3).save(BlogRequest(query=wookey, page=1, size=10, sort=RECENCY, source=KAKAO))
+17:50:36.307 [pool-2-thread-1 @coroutine#4] DEBUG io.mockk.impl.recording.states.AnsweringState - Answering kotlin.Unit on BlogSearchKeywordRepository(#2).save(BlogRequest(query=wookey, page=1, size=10, sort=RECENCY, source=KAKAO))
+WARN: Duplicated test name 블로그 조회가 정상적이지 않을 때. To disable this message, set DuplicateTestNameMode to None.
+17:50:36.314 [pool-2-thread-1 @coroutine#4] DEBUG io.mockk.impl.recording.states.AnsweringState - Throwing java.lang.RuntimeException on BlogClientUseCase(#1).getBlogContents(BlogRequest(query=wookey, page=1, size=10, sort=RECENCY, source=KAKAO))
+17:50:36.314 [pool-2-thread-1 @coroutine#4] ERROR com.wookey.project.search.blog.application.BlogSearchService - KAKAO client error: null
+17:50:36.315 [pool-2-thread-1 @coroutine#4] DEBUG io.mockk.impl.recording.states.AnsweringState - Throwing java.lang.RuntimeException on BlogClientUseCase(#1).getBlogContents(BlogRequest(query=wookey, page=1, size=10, sort=RECENCY, source=NAVER))
+17:50:36.315 [pool-2-thread-1 @coroutine#4] ERROR com.wookey.project.search.blog.application.BlogSearchService - NAVER client error: null
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

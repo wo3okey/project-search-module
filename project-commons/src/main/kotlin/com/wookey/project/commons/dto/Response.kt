@@ -1,9 +1,11 @@
 package com.wookey.project.commons.dto
 
+import com.fasterxml.jackson.annotation.JsonInclude
 import org.springframework.data.domain.Page
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 interface Response<T> {
     val data: T
 
