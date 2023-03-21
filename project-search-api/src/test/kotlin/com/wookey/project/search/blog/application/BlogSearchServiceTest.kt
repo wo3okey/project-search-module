@@ -75,7 +75,17 @@ internal class GetBlogContentsTest : BehaviorSpec({
                 }
             }
 
-            When("블로그 조회가 정상적이지 않을 때") {
+            When("블로그 조회 결과가 없을때") {
+                every {
+                    mocks.blogClientUseCase.getBlogContents(any())
+                } returns Pair(emptyList(), 0L)
+
+                Then("ClientException이 발생한다") {
+                    shouldThrow<ClientException> { mocks.blogSearchService.getBlogContents(request) }
+                }
+            }
+
+            When("블로그 조회간에 오류가 있을 때") {
                 every { mocks.blogClientUseCase.getBlogContents(any()) } throws RuntimeException()
 
                 Then("ClientException이 발생한다.") {

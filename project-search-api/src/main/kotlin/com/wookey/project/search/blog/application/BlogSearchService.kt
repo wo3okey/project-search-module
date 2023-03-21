@@ -49,7 +49,12 @@ class BlogSearchService(
         sources.forEach { source ->
             runCatching {
                 blogRequest.source = source
-                blogClientUseCase.getBlogContents(blogRequest)
+                val contents = blogClientUseCase.getBlogContents(blogRequest)
+
+                if (contents.first.isEmpty()) {
+                    throw ClientException("검색 결과가 없습니다.")
+                }
+                contents
             }.onSuccess { contents ->
                 blogSearchLogRepository.save(blogRequest)
                 blogSearchKeywordRepository.save(blogRequest)

@@ -36,6 +36,7 @@ class BlogSearchPageRequest(
     }
 
     fun toPage(): PageRequest {
-        return PageRequest.of(page, size)
+        val pageNumber = page - 1 // request는 0부터지만 pageRequest 객체는 0부터 시작
+        return PageRequest.of(pageNumber, size)
     }
 }
