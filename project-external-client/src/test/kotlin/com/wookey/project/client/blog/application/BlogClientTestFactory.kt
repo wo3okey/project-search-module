@@ -44,6 +44,13 @@ object BlogClientTestFactory {
         )
     }
 
+    fun getEmptyKakaoBlogResponse(): BlogContents {
+        return KakaoBlogContents(
+            KakaoBlogContents.Meta(0, 0, true),
+            listOf()
+        )
+    }
+
     fun getNaverBlogResponse(): BlogContents {
         return NaverBlogContents(
             "",

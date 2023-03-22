@@ -17,7 +17,6 @@ import com.wookey.project.search.blog.domain.SearchKeywordCondition
 import mu.KotlinLogging
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
-import kotlin.math.ceil
 
 @Service
 class BlogSearchService(
@@ -44,7 +43,7 @@ class BlogSearchService(
         return BlogSearchPageResponse(
             blogRequest.page,
             blogRequest.size,
-            if (blogRequest.page == 0) 1 else ceil(totalElements.toDouble() / blogRequest.size.toDouble()).toInt(),
+            blogRequest.getTotalPages(totalElements),
             totalElements,
             blogContents
         )
@@ -56,12 +55,7 @@ class BlogSearchService(
         sources.forEach { source ->
             runCatching {
                 blogRequest.source = source
-                val contents = blogClientUseCase.getBlogContents(blogRequest)
-
-                if (contents.first.isEmpty()) {
-                    throw ClientException("검색 결과가 없습니다.")
-                }
-                contents
+                blogClientUseCase.getBlogContents(blogRequest)
             }.onSuccess { contents ->
                 blogSearchLogRepository.save(blogRequest)
                 blogSearchKeywordRepository.save(blogRequest)
