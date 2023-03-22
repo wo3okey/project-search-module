@@ -3,7 +3,6 @@ package com.wookey.project.search.blog.adapter.rest.dto
 import com.wookey.project.client.blog.application.BlogSearchSort
 import com.wookey.project.commons.exception.BadRequestException
 import io.swagger.v3.oas.annotations.Parameter
-import org.springframework.data.domain.PageRequest
 import javax.validation.constraints.Max
 import javax.validation.constraints.Positive
 
@@ -11,6 +10,7 @@ class BlogSearchPageRequest(
     @field:Positive
     @field:Max(100, message = "page는 100 이하여야 합니다.")
     @field:Parameter(
+        example = "1",
         required = false,
         description = "결과 페이지 번호, 1~100 사이의 값, 기본 값 1"
     )
@@ -19,6 +19,7 @@ class BlogSearchPageRequest(
     @field:Positive
     @field:Max(100, message = "size는 100 이하여야 합니다.")
     @field:Parameter(
+        example = "10",
         required = false,
         description = "한 페이지에 보여질 문서 수, 1~100 사이의 값, 기본 값 10"
     )
@@ -33,10 +34,5 @@ class BlogSearchPageRequest(
 ) {
     init {
         BlogSearchSort.values().find { it.value == sort } ?: throw BadRequestException("sort 조건 겂이 잘못 되었습니다.")
-    }
-
-    fun toPage(): PageRequest {
-        val pageNumber = page - 1 // request는 0부터지만 pageRequest 객체는 0부터 시작
-        return PageRequest.of(pageNumber, size)
     }
 }

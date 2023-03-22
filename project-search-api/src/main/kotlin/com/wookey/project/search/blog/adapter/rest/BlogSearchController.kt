@@ -33,8 +33,7 @@ class BlogSearchController(
         @ParameterObject @Valid
         pageRequest: BlogSearchPageRequest
     ): PageResponse<BlogClientResponse> {
-        val result = blogSearchUseCase.search(searchRequest, pageRequest)
-        return Response.ofPage(result)
+        return blogSearchUseCase.search(searchRequest, pageRequest)
     }
 
     @GetMapping("/v1/search/blogs/keywords")

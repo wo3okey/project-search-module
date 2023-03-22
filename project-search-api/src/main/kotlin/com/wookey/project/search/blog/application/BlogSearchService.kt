@@ -8,16 +8,16 @@ import com.wookey.project.client.blog.domain.BlogSource
 import com.wookey.project.commons.exception.ClientException
 import com.wookey.project.search.blog.adapter.rest.dto.BlogKeywordsResponse
 import com.wookey.project.search.blog.adapter.rest.dto.BlogSearchPageRequest
+import com.wookey.project.search.blog.adapter.rest.dto.BlogSearchPageResponse
 import com.wookey.project.search.blog.adapter.rest.dto.BlogSearchRequest
 import com.wookey.project.search.blog.application.port.BlogSearchKeywordRepository
 import com.wookey.project.search.blog.application.port.BlogSearchLogRepository
 import com.wookey.project.search.blog.application.port.BlogSearchUseCase
 import com.wookey.project.search.blog.domain.SearchKeywordCondition
 import mu.KotlinLogging
-import org.springframework.data.domain.Page
-import org.springframework.data.domain.PageImpl
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import kotlin.math.ceil
 
 @Service
 class BlogSearchService(
@@ -31,7 +31,7 @@ class BlogSearchService(
     override fun search(
         searchRequest: BlogSearchRequest,
         pageRequest: BlogSearchPageRequest
-    ): Page<BlogClientResponse> {
+    ): BlogSearchPageResponse {
         val blogRequest = BlogRequest(
             searchRequest.query,
             pageRequest.page,
@@ -39,8 +39,15 @@ class BlogSearchService(
             BlogSearchSort.findOrDefault(pageRequest.sort)
         )
 
-        val (blogContents, total) = getBlogContents(blogRequest)
-        return PageImpl(blogContents, pageRequest.toPage(), total)
+        val (blogContents, totalElements) = getBlogContents(blogRequest)
+
+        return BlogSearchPageResponse(
+            blogRequest.page,
+            blogRequest.size,
+            if (blogRequest.page == 0) 1 else ceil(totalElements.toDouble() / blogRequest.size.toDouble()).toInt(),
+            totalElements,
+            blogContents
+        )
     }
 
     fun getBlogContents(blogRequest: BlogRequest): Pair<List<BlogClientResponse>, Long> {

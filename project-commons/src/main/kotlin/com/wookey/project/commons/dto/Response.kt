@@ -1,7 +1,6 @@
 package com.wookey.project.commons.dto
 
 import com.fasterxml.jackson.annotation.JsonInclude
-import org.springframework.data.domain.Page
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 
@@ -11,20 +10,18 @@ interface Response<T> {
 
     companion object {
         fun <T> of(data: T): Response<T> = DefaultResponse(data)
-
-        fun <T> ofPage(pagedData: Page<T>): PageResponse<T> = PageResponse(
-            pagedData.pageable.pageNumber,
-            pagedData.pageable.pageSize,
-            pagedData.totalPages,
-            pagedData.totalElements,
-            pagedData.content
-        )
     }
 }
 
 class DefaultResponse<T>(override val data: T) : Response<T>
 
-class PageResponse<T>(val page: Int, val size: Int, val totalPages: Int, val totalElements: Long, override val data: List<T>) : Response<List<T>>
+open class PageResponse<T>(
+    open val page: Int,
+    open val size: Int,
+    open val totalPages: Int,
+    open val totalElements: Long,
+    override val data: List<T>
+) : Response<List<T>>
 
 data class ExceptionResponse(
     val error: HttpStatus,

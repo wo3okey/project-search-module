@@ -43,7 +43,7 @@ internal class SearchTest : BehaviorSpec({
 
             Then("블로그 검색 정보를 반환한다.") {
                 val result = mocks.blogSearchService.search(searchRequest, pageRequest)
-                result.shouldNotBeEmpty()
+                result.data.shouldNotBeEmpty()
             }
         }
     }
