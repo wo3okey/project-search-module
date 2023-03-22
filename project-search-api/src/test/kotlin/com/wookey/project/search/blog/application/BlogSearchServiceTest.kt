@@ -68,7 +68,7 @@ internal class GetBlogContentsTest : BehaviorSpec({
                         every { mocks.blogSearchKeywordRepository.save(any()) } just runs
 
                         Then("컨텐츠 결과값을 반환한다.") {
-                            val result = mocks.blogSearchService.getBlogContents(request)
+                            val result = mocks.blogSearchService.getBlogContentsAndSaveLog(request)
                             result.shouldNotBeNull()
                         }
                     }
@@ -78,8 +78,16 @@ internal class GetBlogContentsTest : BehaviorSpec({
             When("블로그 조회간에 오류가 있을 때") {
                 every { mocks.blogClientUseCase.getBlogContents(any()) } throws RuntimeException()
 
-                Then("ClientException이 발생한다.") {
-                    shouldThrow<ClientException> { mocks.blogSearchService.getBlogContents(request) }
+                And("검색 로그를 저장하고") {
+                    every { mocks.blogSearchLogRepository.save(any()) } just runs
+
+                    And("검색 키워드 정보를 저장하고") {
+                        every { mocks.blogSearchKeywordRepository.save(any()) } just runs
+
+                        Then("ClientException이 발생한다.") {
+                            shouldThrow<ClientException> { mocks.blogSearchService.getBlogContentsAndSaveLog(request) }
+                        }
+                    }
                 }
             }
         }

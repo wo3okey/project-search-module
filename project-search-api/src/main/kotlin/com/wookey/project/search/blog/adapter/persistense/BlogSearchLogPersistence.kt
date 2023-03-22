@@ -6,6 +6,8 @@ import com.wookey.project.search.blog.adapter.persistense.entity.BlogSearchLogEn
 import com.wookey.project.search.blog.adapter.persistense.jpa.BlogSearchLogJpaRepository
 import com.wookey.project.search.blog.application.port.BlogSearchLogRepository
 import org.springframework.stereotype.Repository
+import org.springframework.transaction.annotation.Propagation
+import org.springframework.transaction.annotation.Transactional
 
 @Repository
 class BlogSearchLogPersistence(
@@ -13,6 +15,7 @@ class BlogSearchLogPersistence(
 ) : BlogSearchLogRepository {
     private val gson = Gson()
 
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     override fun save(request: BlogRequest) {
         blogSearchLogJpaRepository.save(
             BlogSearchLogEntity(

@@ -26,7 +26,6 @@ class BlogSearchService(
 ) : BlogSearchUseCase {
     private val logger = KotlinLogging.logger { }
 
-    @Transactional
     override fun search(
         searchRequest: BlogSearchRequest,
         pageRequest: BlogSearchPageRequest
@@ -38,7 +37,7 @@ class BlogSearchService(
             BlogSearchSort.findOrDefault(pageRequest.sort)
         )
 
-        val (blogContents, totalElements) = getBlogContents(blogRequest)
+        val (blogContents, totalElements) = getBlogContentsAndSaveLog(blogRequest)
 
         return BlogSearchPageResponse(
             blogRequest.page,
@@ -49,23 +48,24 @@ class BlogSearchService(
         )
     }
 
-    fun getBlogContents(blogRequest: BlogRequest): Pair<List<BlogClientResponse>, Long> {
+    @Transactional
+    fun getBlogContentsAndSaveLog(blogRequest: BlogRequest): Pair<List<BlogClientResponse>, Long> {
         val sources = BlogSource.values().sortedBy { it.order }
 
-        sources.forEach { source ->
-            runCatching {
+        val contents = sources.firstNotNullOfOrNull { source ->
+            try {
                 blogRequest.source = source
                 blogClientUseCase.getBlogContents(blogRequest)
-            }.onSuccess { contents ->
-                blogSearchLogRepository.save(blogRequest)
-                blogSearchKeywordRepository.save(blogRequest)
-                return contents
-            }.onFailure {
-                logger.error { "$source client error: ${it.message}" }
+            } catch (e: RuntimeException) {
+                logger.error { "$source client error: ${e.message}" }
+                null
             }
         }
 
-        throw ClientException("요청 정보에 응답 가능한 blog client가 없습니다.")
+        blogSearchLogRepository.save(blogRequest)
+        blogSearchKeywordRepository.save(blogRequest)
+
+        return contents ?: throw ClientException("요청 정보에 응답 가능한 blog client가 없습니다.")
     }
 
     override fun getKeywords(top: Int, condition: SearchKeywordCondition): List<BlogKeywordsResponse> {

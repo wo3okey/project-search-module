@@ -8,11 +8,14 @@ import com.wookey.project.search.blog.application.port.BlogSearchKeywordReposito
 import com.wookey.project.search.blog.domain.SearchKeyword
 import com.wookey.project.search.blog.domain.SearchKeywordCondition
 import org.springframework.stereotype.Repository
+import org.springframework.transaction.annotation.Propagation
+import org.springframework.transaction.annotation.Transactional
 
 @Repository
 class BlogSearchKeywordPersistence(
     val blogSearchKeywordJpaRepository: BlogSearchKeywordJpaRepository
 ) : BlogSearchKeywordRepository {
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     override fun save(request: BlogRequest) {
         val entity = blogSearchKeywordJpaRepository.findByKeyword(keyword = request.query)
         if (entity != null) {
