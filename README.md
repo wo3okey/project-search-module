@@ -48,15 +48,20 @@ swagger: http://localhost:8080/swagger-ui/index.html
 ## DB table spec
 h2 console: http://localhost:8080/h2-console
 
-#### BLOG_SEARCH_LOG
+### BLOG_SEARCH_LOG
+blog 검색 로그 테이블
+
 | column     | data_type | nullable | description   |
 |------------|-----------|----------|---------------|
 | id         | bigint    | n        | pk            |
 | query      | text      | n        | 검색 query json |
 | user_id    | bigint    | n        | 유저아이디         |
 | created_at | datetime  | n        | 검색 로그 일시      |
+* index: only pk
 
-#### BLOG_SEARCH_KEYWORD
+### BLOG_SEARCH_KEYWORD
+blog 검색어 테이블
+
 | column       | data_type | nullable | description |
 |--------------|----------|----------|-------------|
 | id           | bigint   | n        | pk          |
@@ -65,6 +70,7 @@ h2 console: http://localhost:8080/h2-console
 | created_at   | datetime | n        | 검색어 등록 일시   |
 | modified_at  | datetime | n        | 검색어 변경 일시   |
 * index
+  * pk
   * udx_keyword(keyword)
   * idx_search_count(search_count)
   * idx_modified_at(modified_at)
